@@ -1,6 +1,8 @@
 <template>
   <div class="hy-main-wrap">
-    <div class="hy-title">联系我们</div>
+    <div class="hy-title">
+      海沙销售代理商
+    </div>
   </div>
 </template>
 <script>

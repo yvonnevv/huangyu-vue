@@ -17,9 +17,11 @@ Vue.use(VueRouter)
  */
 
 const Home = r => require.ensure([], () => r(require('../views/home')))
-const Category = r => require.ensure([], () => r(require('../views/category')))
-const Cart = r => require.ensure([], () => r(require('../views/cart')))
-const About = r => require.ensure([], () => r(require('../views/about')))
+const Haisha = r => require.ensure([], () => r(require('../views/haisha')))
+// const Cart = r => require.ensure([], () => r(require('../views/cart')))
+// const About = r => require.ensure([], () => r(require('../views/about')))
+
+console.log('Home', Home);
 
 const baseUrl = '' // 多页面路径配置
 
@@ -35,19 +37,9 @@ const routes = [
     component: Home
   },
   {
-    name: 'category',
-    path: baseUrl + '/category',
-    component: Category
-  },
-  {
-    name: 'cart',
-    path: baseUrl + '/cart',
-    component: Cart
-  },
-  {
-    name: 'about',
-    path: baseUrl + '/about',
-    component: About
+    name: 'haisha',
+    path: baseUrl + '/haisha',
+    component: Haisha
   }
 ]
 

@@ -119,24 +119,13 @@ module.exports = {
     //   css: ExtractTextPlugin.extract('style-loader','css-loader!less-loader')
     // },
     postcss: [
-      /**
-       * [baseDpr description]
-       * @type {Number}
-       * 字体单位用 `dpx`; 边框单位用 `rpx`; 其他宽度用 px 会自动转换为 rem
-       * .cls {
-            width: 75px;
-            font-size: 12dpx
-            border: 1rpx
-          }
-       *
-       */
-      // require('postcss-plugins-px2rem')({
-      //   // baseDpr: 2, // base device pixel ratio (default: 2)
-      //   // threeVersion: false, // whether to generate @1x, @2x and @3x version (default: false)
-      //   // remVersion: true, // whether to generate rem version (default: true)
-      //   // remPrecision: 6, // rem precision (default: 6)
-      //   remUnit: 75 // rem unit value (default: 75)
-      // }),
+      require('postcss-plugins-px2rem')({
+        // baseDpr: 2, // base device pixel ratio (default: 2)
+        // threeVersion: false, // whether to generate @1x, @2x and @3x version (default: false)
+        // remVersion: true, // whether to generate rem version (default: true)
+        // remPrecision: 6, // rem precision (default: 6)
+        remUnit: 100 // rem unit value (default: 75)
+      }),
       require('autoprefixer')({
         browsers: ['Firefox >= 20', '> 5%', 'last 2 versions']
       })

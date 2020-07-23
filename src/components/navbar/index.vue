@@ -2,7 +2,7 @@
   <div class="navbar">
     <yd-accordion>
       <yd-accordion-item class="navbar-control">
-        <div slot="icon"></div>
+        <div slot="icon"><img class="logo" src="https://iph.href.lu/37x52" alt="" srcset=""></div>
         <yd-accordion>
           <router-link to="/about" class="nav-item shouye">
             <p>首页</p>
@@ -36,7 +36,6 @@
 <script>
 import Vue from "vue";
 import { Accordion, AccordionItem } from "vue-ydui/dist/lib.rem/accordion";
-import navItem from "./nav-item";
 
 Vue.component(Accordion.name, Accordion);
 Vue.component(AccordionItem.name, AccordionItem);
@@ -148,6 +147,11 @@ export default {
   width: 100%;
   z-index: 100;
 
+  .logo {
+    width: 37px;
+    height: 52px;
+  }
+
   .nav-item.shouye {
     min-height: 1rem;
     display: -webkit-box;
@@ -191,7 +195,7 @@ export default {
         width: auto !important;
         height: auto !important;
         transform: none;
-        font-size: 24px;
+        font-size: 30px;
         content: "\e61e";
         color: #999999;
         position: relative;
@@ -204,10 +208,13 @@ export default {
     }
 
     & > .yd-accordion-head {
+      &::after {
+        display: none;
+      }
       .yd-accordion-head-arrow {
         &::after {
           content: "\e605";
-          font-size: 24px;
+          font-size: 40px;
           transform: none;
           left: 0;
         }
@@ -215,7 +222,7 @@ export default {
     }
 
     & > .yd-accordion-content {
-      padding: 0 10px;
+      padding: 0 30px;
       background: #fff;
 
       .yd-accordion-head {
@@ -237,8 +244,8 @@ export default {
     .nav-child-item {
       display: block;
       font-size: 12px;
-      padding-left: 40px;
-      line-height: 34px;
+      padding-left: 80px;
+      line-height: 68px;
       color: #333333;
       border-bottom: 1px solid #f1f1f1;
     }
