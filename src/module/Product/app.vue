@@ -12,7 +12,7 @@
     </main-content>
     <!-- 不合理的设计布局 -->
     <div class="hy-article-imgs">
-      <img v-for="" src="" alt="">
+      <img v-for="(img, index) in articleImgs" :src="img" :key="index" alt="">
     </div>
     <copyright></copyright>
   </div>
@@ -28,7 +28,7 @@ export default {
   data() {
     return {
       activePath: '/kuangchan',
-      imgs: [],
+      articleImgs: [],
       title: {
         zh: '集团产业',
         en: 'Information Center'
@@ -62,10 +62,8 @@ export default {
     this.$store.dispatch('LOAD_PAGEINFO');
     // 默认
     const hash = location.hash ? location.hash.substring(2) : 'kuangchan';
-    console.log('HASH', hash);
     const curPageKey = this.getPageKey(hash);
-    // this.imgs = this[curPageKey];
-    console.log('this[curPageKey]', curPageKey, this[curPageKey]);
+    this.articleImgs = [this[curPageKey]['image1'], this[curPageKey]['image2'], this[curPageKey]['image3']];
   },
   components: {
     navbar,
