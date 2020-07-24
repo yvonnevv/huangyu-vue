@@ -30,7 +30,7 @@ export default {
 </script>
 <style lang="less" scoped>
   .hy-sidebar {
-    margin-right: 24px;
+    margin-right: 30px;
 
     &-title {
       border-radius:10px 10px 0px 0px;

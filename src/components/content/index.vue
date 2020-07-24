@@ -16,7 +16,7 @@ export default {
 </script>
 <style lang="less">
   .hy-main {
-    margin: 25px 20px 50px;
+    margin: 25px 20px 0;
     display: flex;
   }
 
@@ -38,5 +38,12 @@ export default {
       opacity:0.3;
       margin-top: 12px;
     }
+  }
+
+  .hy-article {
+    color: #666666;
+    font-size: 20px;
+    text-indent: 30px;
+    line-height: 1.5;
   }
 </style>

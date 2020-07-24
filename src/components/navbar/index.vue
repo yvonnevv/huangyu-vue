@@ -2,7 +2,7 @@
   <div class="navbar">
     <yd-accordion>
       <yd-accordion-item class="navbar-control">
-        <div slot="icon"><img class="logo" src="https://iph.href.lu/37x52" alt="" srcset=""></div>
+        <div slot="icon"><img class="logo" src="http://www.royalhonors.group/image/logo.png" alt="" srcset=""></div>
         <yd-accordion>
           <router-link to="/about" class="nav-item shouye">
             <p>首页</p>
@@ -214,7 +214,8 @@ export default {
       .yd-accordion-head-arrow {
         &::after {
           content: "\e605";
-          font-size: 40px;
+          font-size: 50px;
+          color: #ffffff;
           transform: none;
           left: 0;
         }

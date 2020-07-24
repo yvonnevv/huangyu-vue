@@ -3,7 +3,7 @@
     <!-- 导航 -->
     <navbar></navbar>
     <banner>
-      <img src="http://www.royalhonors.group/temp-rainy/5d5c47d0-5c08-4cd1-97ae-8b7c6ce37c0c.png" alt="" srcset="">
+      <img :src="pageInfo.imagePath" alt="" srcset="">
     </banner>
     <main-content :title="title" :links="links" :activePath="activePath">
       <transition name="fade" mode="out-in">
@@ -39,7 +39,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(["urlItems"])
+    ...mapState(['pageInfo'])
   },
   components: {
     navbar,
@@ -47,8 +47,13 @@ export default {
     banner,
     mainContent
   },
+  created() {
+    this.$store.dispatch('LOAD_COPYRIGHT');
+    this.$store.dispatch('LOAD_PAGEINFO');
+  },
   watch: {
     $route(to, from) {
+      console.log('topath', to);
       this.activePath = to.path;
     }
   }
