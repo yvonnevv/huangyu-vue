@@ -7,9 +7,13 @@
     </banner>
     <main-content :title="title" :links="links" :activePath="activePath">
       <transition name="fade" mode="out-in">
-      <router-view keep-alive></router-view>
-    </transition>
+        <router-view keep-alive></router-view>
+      </transition>
     </main-content>
+    <!-- 不合理的设计布局 -->
+    <div class="hy-article-imgs">
+      <img v-for="" src="" alt="">
+    </div>
     <copyright></copyright>
   </div>
 </template>
@@ -24,6 +28,7 @@ export default {
   data() {
     return {
       activePath: '/kuangchan',
+      imgs: [],
       title: {
         zh: '集团产业',
         en: 'Information Center'
@@ -44,11 +49,23 @@ export default {
     }
   },
   computed: {
-    ...mapState(['pageInfo'])
+    ...mapState([
+      'pageInfo',
+      'pageKuangchan',
+      'pageJijian',
+      'pageTianhai',
+      'pageTouzi'
+    ])
   },
   created() {
     this.$store.dispatch('LOAD_COPYRIGHT');
     this.$store.dispatch('LOAD_PAGEINFO');
+    // 默认
+    const hash = location.hash ? location.hash.substring(2) : 'kuangchan';
+    console.log('HASH', hash);
+    const curPageKey = this.getPageKey(hash);
+    // this.imgs = this[curPageKey];
+    console.log('this[curPageKey]', curPageKey, this[curPageKey]);
   },
   components: {
     navbar,
@@ -58,7 +75,16 @@ export default {
   },
   watch: {
     $route(to, from) {
-      this.activePath = to.path;
+      const { path, name } = to;
+      const curPageKey = this.getPageKey(name);
+      console.log('curPageKey', curPageKey);
+      this.activePath = path;
+      console.log('TO>>>', to);
+    }
+  },
+  methods: {
+    getPageKey(hash) {
+      return `page${hash.charAt(0).toUpperCase()}${hash.substring(1)}`;
     }
   }
 };
