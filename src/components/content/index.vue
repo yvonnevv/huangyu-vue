@@ -16,7 +16,7 @@ export default {
 </script>
 <style lang="less">
   .hy-main {
-    margin: 25px 20px 0;
+    margin: 25px 30px 0 20px;
     display: flex;
   }
 
@@ -33,9 +33,9 @@ export default {
       content: '';
       display: block;
       width: 100%;
-      height:1px;
+      height: 2px;
       background:rgba(74,74,74,1);
-      opacity:0.3;
+      opacity: 0.3;
       margin-top: 12px;
     }
   }
@@ -43,7 +43,23 @@ export default {
   .hy-article {
     color: #666666;
     font-size: 20px;
-    text-indent: 30px;
-    line-height: 1.5;
+    max-width: 488px;
+    overflow-x: hidden;
+
+    img {
+      max-width: 100%;
+    }
+
+    h3, p {
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    h3.title {
+      text-align: center;
+      margin: 30px 0 20px;
+    }
+    // text-indent: 30px;
+    // line-height: 1.5;
   }
 </style>

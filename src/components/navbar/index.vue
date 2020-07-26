@@ -1,30 +1,31 @@
 <template>
-  <div class="navbar">
+  <div class="navbar" :class="isOverView ? 'over' : ''">
     <yd-accordion>
-      <yd-accordion-item class="navbar-control">
-        <div slot="icon"><img class="logo" src="http://www.royalhonors.group/image/logo.png" alt="" srcset=""></div>
+      <yd-accordion-item class="navbar-control" ref="accordion_main">
+        <div slot="icon">
+          <img class="logo" src="http://www.royalhonors.group/image/logo.png" alt srcset />
+        </div>
         <yd-accordion>
-          <router-link to="/about" class="nav-item shouye">
+          <a :href="homePath" class="nav-item shouye">
             <p>首页</p>
-          </router-link>
+          </a>
           <yd-accordion-item
             :title="item.label"
             v-for="(item, index) in navList"
             :key="item.label"
-            :auto="false"
             :ref="`accordion_${index}`"
-            @click.native="itemClick(index, $event)"
-            :class="item.className"
+            :class="index === openIdx ? 'active': ''"
+            @click.native="itemClick(index)"
           >
             <div v-if="item.child">
-              <router-link
+              <div
                 v-for="cItem in item.child"
                 :key="cItem.label"
                 class="nav-child-item"
-                to="/"
+                @click="jumpTo(cItem.to)"
               >
                 <p v-text="cItem.label"></p>
-              </router-link>
+              </div>
             </div>
           </yd-accordion-item>
         </yd-accordion>
@@ -50,83 +51,112 @@ export default {
           className: "nav-item jituan",
           child: [
             {
-              label: "关于皇誉"
+              label: "关于皇誉",
+              to: `//${location.host}/business.html#/about`,
             },
             {
-              label: "荣誉资质"
+              label: "荣誉资质",
+              to: `//${location.host}/business.html#/rongyu`,
             },
             {
-              label: "投资合作"
-            }
-          ]
+              label: "投资合作",
+              to: `//${location.host}/business.html#/hezuo`,
+            },
+          ],
         },
         {
           label: "集团项目",
           className: "nav-item xiangmu",
           child: [
             {
-              label: "基建项目"
+              label: "基建项目",
+              to: `//${location.host}/product.html#/jijian`,
             },
             {
-              label: "矿产资源"
+              label: "矿产资源",
+              to: `//${location.host}/product.html#/kuangchan`,
             },
             {
-              label: "填海资源"
+              label: "填海资源",
+              to: `//${location.host}/product.html#/tianhai`,
             },
             {
-              label: "投资项目"
-            }
-          ]
+              label: "投资项目",
+              to: `//${location.host}/product.html#/touzi`,
+            },
+          ],
         },
         {
           label: "新闻中心",
           className: "nav-item xinwen",
           child: [
             {
-              label: "行业新闻"
+              label: "集团新闻",
+              to: `//${location.host}/news.html#/jituan`,
             },
             {
-              label: "集团新闻"
-            }
-          ]
+              label: "行业新闻",
+              to: `//${location.host}/news.html#/hangye`,
+            },
+          ],
         },
         {
           label: "联系我们",
           className: "nav-item lianxi",
           child: [
             {
-              label: "联系方式"
+              label: "联系方式",
+              to: `//${location.host}/contact.html#/home`,
             },
             {
-              label: "海沙销售代理商"
-            }
-          ]
-        }
+              label: "海沙销售代理商",
+              to: `//${location.host}/contact.html#/haisha`,
+            },
+          ],
+        },
       ],
-      openIdx: -1
+      homePath: `//${location.host}/home.html`,
+      openIdx: -1,
+      isOverView: false
     };
   },
+  created() {
+    window.addEventListener("scroll", this.debounce(this.handleScroll, 10), true);
+  },
   mounted() {
-    console.log("MOUNT");
+    this.container = document.querySelector('.container');
+    this.documentElement = document.documentElement;
+    console.log('MOUNT', this.container);
+    this.handleScroll();
   },
   methods: {
-    itemClick(index, e) {
-      let target = e.target;
-      if (target.nodeName.toLocaleLowerCase() === "span") {
-        target = target.parentNode;
-      }
-      const refName = `accordion_${index}`;
-      if (this.openIdx !== index) {
-        this.openIdx = index;
-        this.$refs[refName][0].openItem();
-        target.classList.add("active");
-      } else {
+    itemClick(index) {
+      if (this.openIdx === index) {
         this.openIdx = -1;
-        this.$refs[refName][0].closeItem();
-        target.classList.remove("active");
+      } else {
+        this.openIdx = index;
       }
-    }
-  }
+    },
+    jumpTo(path) {
+      window.open(path, "_self");
+      this.$refs.accordion_main.closeItem();
+    },
+    handleScroll() {
+      const scrolDis = this.container.scrollTop || this.documentElement.scrollTop;
+      if (scrolDis >= 300) {
+        this.isOverView = true;
+      } else {
+        this.isOverView = false;
+      };
+    },
+    debounce(fn, wait) {
+      let timeout = null;
+      return function () {
+        if (timeout !== null) clearTimeout(timeout);
+        timeout = setTimeout(fn, wait);
+      };
+    },
+  },
 };
 </script>
 <style lang='less'>
@@ -145,11 +175,22 @@ export default {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 100;
+  z-index: 1000;
+  transition: all 300ms ease;
+
+  &.over {
+    background: rgba(0, 0, 0, 0.5);
+  }
 
   .logo {
     width: 37px;
     height: 52px;
+  }
+
+  .active {
+    .yd-accordion-title {
+      color: #dfc287 !important;
+    }
   }
 
   .nav-item.shouye {

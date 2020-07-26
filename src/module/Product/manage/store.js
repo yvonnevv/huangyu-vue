@@ -4,12 +4,15 @@ import $http from '../../../util/httpRequest';
 
 Vue.use(Vuex);
 
+const prefix = 'http://www.royalhonors.group';
+
 const SET_COPYRIGHT = 'SET_COPYRIGHT';
 const SET_PAGEINFO = 'SET_PAGEINFO';
 const SET_PAGE_KUANGCHAN = 'SET_PAGE_KUANGCHAN';
 const SET_PAGE_TIANHAI = 'SET_PAGE_TIANHAI';
 const SET_PAGE_JIJIAN = 'SET_PAGE_JIJIAN';
 const SET_PAGE_TOUZI = 'SET_PAGE_TOUZI';
+const UPDATE_IMGS = 'UPDATE_IMGS';
 
 const fetchData = (url, commit, type) => {
   $http.get(url).then((response) => {
@@ -30,7 +33,8 @@ const store = new Vuex.Store({
     pageKuangchan: {},
     pageTianhai: {},
     pageJijian: {},
-    pageTouzi: {}
+    pageTouzi: {},
+    pageImgs: []
   },
   actions: {
     LOAD_COPYRIGHT: ({ commit }) => {
@@ -50,6 +54,11 @@ const store = new Vuex.Store({
     },
     LOAD_PAGE_TOUZI: ({ commit }) => {
       fetchData('/index/groupIndustriesId?id=34', commit, SET_PAGE_TOUZI);
+    },
+    UPDATE_IMGS: ({ commit }, imgs) => {
+      commit(UPDATE_IMGS, {
+        data: imgs
+      })
     }
   },
   mutations: {
@@ -57,9 +66,7 @@ const store = new Vuex.Store({
       state.copyright = data[0];
     },
     [SET_PAGEINFO]: (state, { data }) => {
-      const prefix = 'http://www.royalhonors.group';
       data.imagePath = `${prefix}${data.imagePath}`;
-
       state.pageInfo = data;
     },
     [SET_PAGE_KUANGCHAN]: (state, { data }) => {
@@ -73,6 +80,10 @@ const store = new Vuex.Store({
     },
     [SET_PAGE_TOUZI]: (state, { data }) => {
       state.pageTouzi = data.Contents;
+    },
+    [UPDATE_IMGS]: (state, { data }) => {
+      data = data.map(item => `${prefix}${item}`);
+      state.pageImgs = data;
     }
   },
   getters: {

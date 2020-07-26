@@ -30,7 +30,6 @@ export default {
 
 <style lang="less" scoped>
 .hy-copyright {
-
   display: flex;
   background: #9a979b;
   width: 750px;
@@ -40,7 +39,9 @@ export default {
   overflow-x: hidden;
 
   &-wrap {
-    margin-top: 173px;
+    margin-top: 220px;
+    position: relative;
+    z-index: 100;
   }
 
   &-left {

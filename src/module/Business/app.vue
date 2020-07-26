@@ -7,10 +7,9 @@
     </banner>
     <main-content :title="title" :links="links" :activePath="activePath">
       <transition name="fade" mode="out-in">
-      <router-view keep-alive></router-view>
-    </transition>
+        <router-view keep-alive></router-view>
+      </transition>
     </main-content>
-    <!-- <router-view keep-alive></router-view> -->
     <copyright></copyright>
   </div>
 </template>
@@ -24,22 +23,33 @@ import mainContent from "@/components/content";
 export default {
   data() {
     return {
-      activePath: '/home',
+      activePath: '/kuangchan',
+      articleImgs: [],
       title: {
-        zh: '联系我们',
-        en: 'Business promotion'
+        zh: '集团概况',
+        en: 'Group profile'
       },
       links: [{
-        title: '联系方式',
-        to: '/home'
+        title: '关于皇誉',
+        to: '/about'
       }, {
-        title: '海沙销售代理商',
-        to: '/haisha'
+        title: '荣誉资质',
+        to: '/rongyu'
+      }, {
+        title: '投资合作',
+        to: '/hezuo'
       }]
     }
   },
   computed: {
-    ...mapState(['pageInfo'])
+    ...mapState([
+      'pageInfo',
+      // 'pageImgs'
+    ])
+  },
+  created() {
+    this.$store.dispatch('LOAD_COPYRIGHT');
+    this.$store.dispatch('LOAD_PAGEINFO');
   },
   components: {
     navbar,
@@ -47,13 +57,8 @@ export default {
     banner,
     mainContent
   },
-  created() {
-    this.$store.dispatch('LOAD_COPYRIGHT');
-    this.$store.dispatch('LOAD_PAGEINFO');
-  },
   watch: {
     $route(to, from) {
-      console.log('topath', to);
       this.activePath = to.path;
     }
   }
@@ -62,21 +67,29 @@ export default {
 <style lang="less">
 @import "../../assets/style/likr.less";
 
-.hy-article {
+.hy-article-imgs {
+  margin: 0 10px;
+  display: flex;
+
   img {
-    width: 170px;
-    height: 125px;
-    margin: 20px 0 10px;
-  }
-  h3, p {
-    font-size: 24px;
-  }
-  h3 {
-    color: #333333;
-    font-weight: bold;
-  }
-  .contact-list {
-    margin-bottom: 20px;
+    flex: 1;
+    width: 226px;
+    margin: 0 7px;
   }
 }
+
+.swiper-container {
+  margin-top: 68px;
+}
+
+.swiper-slide {
+  transform: scale(0.8);
+  opacity: 0.6;
+
+  &.swiper-slide-active {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
 </style>

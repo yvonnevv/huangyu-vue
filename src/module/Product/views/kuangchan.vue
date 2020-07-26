@@ -22,7 +22,10 @@ export default {
   created() {
     this.$store.dispatch('LOAD_PAGE_KUANGCHAN');
   },
-  mounted() {},
+  updated() {
+    const { image1, image2, image3 } = this.pageKuangchan;
+    this.$store.dispatch('UPDATE_IMGS', [image1, image2, image3]);
+  },
   methods: {}
 };
 </script>

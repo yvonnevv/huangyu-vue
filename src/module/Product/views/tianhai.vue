@@ -22,6 +22,10 @@ export default {
   created() {
     this.$store.dispatch('LOAD_PAGE_TIANHAI');
   },
+  updated() {
+    const { image1, image2, image3 } = this.pageTianhai;
+    this.$store.dispatch('UPDATE_IMGS', [image1, image2, image3]);
+  },
   mounted() {},
   methods: {}
 };

@@ -1,10 +1,3 @@
-/*
- * @Author: Leon
- * @Date: 2017-08-20 00:16:20
- * @Last Modified by: Leon
- * @Last Modified time: 2018-05-29 18:33:43
- */
-
 import axios from 'axios'
 
 axios.defaults.baseURL = 'http://www.royalhonors.group/'
@@ -35,7 +28,6 @@ axios.interceptors.request.use(config => {
  */
 axios.interceptors.response.use(response => {
   vm.$closeSnake();
-  console.log('response>>>', response);
   return response;
 }, error => {
   if (error && error.response) {
@@ -68,9 +60,6 @@ let HTTP = (type, url, params, config = {
   let args = [url, params, config].filter(x => Boolean(x));
   return axios[type](...args).then(
     res => {
-      // if (res.data && res.data.code !== 0) {
-      //   vm.$dialog.toast({ mes: res.data.msg, timeout: 1500, icon: 'error' });
-      // }
       return res.data;
     }
   )

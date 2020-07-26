@@ -1,10 +1,3 @@
-/*
- * @Author: Leon
- * @Date: 2017-02-03 14:02:39
- * @Last Modified by: Leon
- * @Last Modified time: 2018-05-29 18:35:06
- */
-
 import Vue from 'vue'
 import moment from 'moment'
 

@@ -10,10 +10,6 @@
         <router-view keep-alive></router-view>
       </transition>
     </main-content>
-    <!-- 不合理的设计布局 -->
-    <div class="hy-article-imgs">
-      <img v-for="(img, index) in pageImgs" :src="img" :key="index" alt="">
-    </div>
     <copyright></copyright>
   </div>
 </template>
@@ -27,24 +23,18 @@ import mainContent from "@/components/content";
 export default {
   data() {
     return {
-      activePath: '/kuangchan',
+      activePath: '/jituan',
       articleImgs: [],
       title: {
-        zh: '集团产业',
+        zh: '新闻中心',
         en: 'Information Center'
       },
       links: [{
-        title: '矿产资源',
-        to: '/kuangchan'
+        title: '集团新闻',
+        to: '/jituan'
       }, {
-        title: '填海工程',
-        to: '/tianhai'
-      }, {
-        title: '基建项目',
-        to: '/jijian'
-      }, {
-        title: '投资项目',
-        to: '/touzi'
+        title: '行业新闻',
+        to: '/hangye'
       }]
     }
   },
@@ -57,6 +47,7 @@ export default {
   created() {
     this.$store.dispatch('LOAD_COPYRIGHT');
     this.$store.dispatch('LOAD_PAGEINFO');
+    this.$store.dispatch('LOAD_NEWS_LIST');
   },
   components: {
     navbar,
@@ -78,15 +69,54 @@ export default {
 </script>
 <style lang="less">
 @import "../../assets/style/likr.less";
+.news-list {
+  &-item {
+    min-height: 84px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    position: relative;
 
-.hy-article-imgs {
-  margin: 0 10px;
-  display: flex;
+    img {
+      width: 139px;
+      height: 100px;
+      margin: 20px 15px 20px 0;
+    }
 
-  img {
-    flex: 1;
-    width: 226px;
-    margin: 0 7px;
+    a {
+      color: #DFC287;
+      font-size: 24px;
+      margin-top: 25px;
+      display: inline-block;
+    }
+
+    p {
+      color: #333333;
+      font-size: 24px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      &.title {
+        max-width: 327px;
+      }
+
+      &.first-title {
+        font-size: 28px;
+        max-width: 315px;
+      }
+    }
+
+    span.time {
+      color: #999999;
+      font-size: 14px;
+      transform: scale(0.8);
+      transform-origin: center right;
+      white-space: nowrap;
+      margin-left: auto;
+      position: absolute;
+      right: 0;
+    }
   }
 }
 
