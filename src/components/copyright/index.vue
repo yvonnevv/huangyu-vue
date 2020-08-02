@@ -2,7 +2,7 @@
   <div class="hy-copyright-wrap">
     <div class="hy-copyright">
     <div class="hy-copyright-left">
-      <img src="http://www.royalhonors.group/image/bottomlogo.png" alt srcset>
+      <img src="../../assets/images/logo_bottom.png" alt srcset>
       <p>
         联系电话：
         <span class="phone">{{copyright.phone}}</span>
@@ -11,7 +11,7 @@
       <p>地址：{{copyright.address}}</p>
     </div>
     <div class="hy-copyright-right">
-      <img src="http://www.royalhonors.group/image/qrcode.png" alt>
+      <img src="../../assets/images/qrcode.png" alt>
       <p>网址：{{copyright.website}}</p>
       <p>IPC：{{copyright.ipc}}</p>
     </div>

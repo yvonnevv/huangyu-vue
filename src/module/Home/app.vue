@@ -79,11 +79,10 @@ body {
   background: #cccccc;
 }
 .home-banner {
-  background: #000;
   position: relative;
   z-index: 800;
-  // width: 100%;
-  // height: 100%;
+  background: url('../../assets/images/home.png') no-repeat;
+  background-size: 100% 100%;
 }
 .home-list,
 .home-news {

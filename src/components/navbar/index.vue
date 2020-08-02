@@ -3,10 +3,10 @@
     <yd-accordion>
       <yd-accordion-item class="navbar-control" ref="accordion_main">
         <div slot="icon">
-          <img class="logo" src="http://www.royalhonors.group/image/logo.png" alt srcset />
+          <img class="logo" src="../../assets/images/logo_top.png" alt srcset />
         </div>
         <yd-accordion>
-          <a :href="homePath" class="nav-item shouye">
+          <a :href="homePath" class="nav-item home">
             <p>首页</p>
           </a>
           <yd-accordion-item
@@ -14,7 +14,7 @@
             v-for="(item, index) in navList"
             :key="item.label"
             :ref="`accordion_${index}`"
-            :class="index === openIdx ? 'active': ''"
+            :class="index === openIdx ? `${item.className} active`: `${item.className}`"
             @click.native="itemClick(index)"
           >
             <div v-if="item.child">
@@ -48,7 +48,7 @@ export default {
       navList: [
         {
           label: "集团概况",
-          className: "nav-item jituan",
+          className: "nav-item business",
           child: [
             {
               label: "关于皇誉",
@@ -66,7 +66,7 @@ export default {
         },
         {
           label: "集团项目",
-          className: "nav-item xiangmu",
+          className: "nav-item product",
           child: [
             {
               label: "基建项目",
@@ -88,11 +88,11 @@ export default {
         },
         {
           label: "新闻中心",
-          className: "nav-item xinwen",
+          className: "nav-item news",
           child: [
             {
               label: "集团新闻",
-              to: `//${location.host}/news.html#/jituan`,
+              to: `//${location.host}/news.html#/business`,
             },
             {
               label: "行业新闻",
@@ -102,7 +102,7 @@ export default {
         },
         {
           label: "联系我们",
-          className: "nav-item lianxi",
+          className: "nav-item contact",
           child: [
             {
               label: "联系方式",
@@ -193,7 +193,7 @@ export default {
     }
   }
 
-  .nav-item.shouye {
+  .nav-item.home {
     min-height: 1rem;
     display: -webkit-box;
     display: -webkit-flex;
@@ -291,6 +291,76 @@ export default {
       color: #333333;
       border-bottom: 1px solid #f1f1f1;
     }
+  }
+}
+
+.nav-item {
+  &.home::before,
+  .yd-accordion-head::before {
+    content: '';
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 24px;
+  }
+
+  &.home {
+    &::before {
+      width: 36px;
+      height: 38px;
+      background-image: url('../../assets/images/icon_home.png');
+    }
+  }
+
+  &.business .yd-accordion-head {
+    &::before {
+      width: 38px;
+      height: 28px;
+      background-image: url('../../assets/images/icon_business.png');
+    }
+  }
+
+  &.product .yd-accordion-head {
+    &::before {
+      width: 35px;
+      height: 35px;
+      background-image: url('../../assets/images/icon_product.png');
+    }
+  }
+
+  &.news .yd-accordion-head {
+    &::before {
+      width: 34px;
+      height: 33px;
+      background-image: url('../../assets/images/icon_news.png');
+    }
+  }
+
+  &.contact .yd-accordion-head {
+    &::before {
+      width: 30px;
+      height: 34px;
+      background-image: url('../../assets/images/icon_contact.png');
+    }
+  }
+
+  &.home.active::before {
+    background-image: url('../../assets/images/icon_home_active.png');
+  }
+
+  &.business.active .yd-accordion-head::before {
+    background-image: url('../../assets/images/icon_business_active.png');
+  }
+
+  &.news.active .yd-accordion-head::before {
+    background-image: url('../../assets/images/icon_news_active.png');
+  }
+
+  &.product.active .yd-accordion-head::before {
+    background-image: url('../../assets/images/icon_product_active.png');
+  }
+
+  &.contact.active .yd-accordion-head::before {
+    background-image: url('../../assets/images/icon_contact_active.png');
   }
 }
 </style>
