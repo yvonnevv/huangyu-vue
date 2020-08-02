@@ -46,7 +46,7 @@ export default {
         color: #DFC287;
         font-size: 20px;
         position: relative;
-        top: 14px;
+        top: 20px;
         margin-bottom: 14px;
       }
       .en {
@@ -55,13 +55,13 @@ export default {
         font-size: 14px;
         color: #fff;
         white-space: nowrap;
-        transform: scale(0.65);
+        margin-top: 26px;
       }
     }
 
     &-link {
       width: 186px;
-      line-height: 60px;
+      line-height: 47px;
       color: #fff;
       font-size: 16px;
       background: #4A4A4A;
@@ -71,10 +71,6 @@ export default {
 
       &.active {
         background: #DFC287;
-      }
-
-      p {
-        transform: scale(0.75);
       }
     }
   }

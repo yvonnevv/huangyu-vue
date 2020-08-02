@@ -37,6 +37,9 @@ export default {
   position: fixed;
   bottom: 0;
   overflow-x: hidden;
+  box-sizing: content-box;
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
 
   &-wrap {
     margin-top: 220px;
@@ -56,22 +59,22 @@ export default {
 
     p {
       color: #ffffff;
-      font-size: 12px;
-      line-height: 1;
-      transform: scale(0.6);
+      font-size: 13px;
       transform-origin: left top;
       white-space: nowrap;
+      line-height: 2;
 
       span {
         font-size: 34px;
         color: #dfc287;
+        line-height: 1;
       }
     }
   }
 
   &-right {
     position: absolute;
-    right: -20px;
+    right: 60px;
     top: 15px;
 
     img {
@@ -80,10 +83,9 @@ export default {
       margin-bottom: 4px;
     }
     p {
-      font-size: 12px;
+      font-size: 16px;
       color: #ffffff;
-      line-height: 1.1;
-      transform: scale(0.8);
+      line-height: 2;
       transform-origin: left top;
     }
   }

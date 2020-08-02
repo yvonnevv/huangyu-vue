@@ -285,7 +285,7 @@ export default {
 
     .nav-child-item {
       display: block;
-      font-size: 12px;
+      font-size: 24px;
       padding-left: 80px;
       line-height: 68px;
       color: #333333;

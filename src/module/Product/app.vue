@@ -86,6 +86,7 @@ export default {
   img {
     flex: 1;
     width: 226px;
+    height: 156px;
     margin: 0 7px;
   }
 }

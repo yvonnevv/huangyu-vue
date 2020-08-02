@@ -71,7 +71,8 @@ const store = new Vuex.Store({
       const { pageIndex } = state;
       const { GroupNews = [] } = pageIndex;
       GroupNews.forEach(item => {
-        const time = item.createdTime;
+        let time = item.createdTime;
+        time = time.replace(/-/g, '/').replace('T', ' ').substring(0, 19);
         let year = new Date(time).getFullYear();
         let mon = new Date(time).getMonth() + 1 >= 10
           ? new Date(time).getMonth() + 1
@@ -87,7 +88,8 @@ const store = new Vuex.Store({
       const { pageIndex } = state;
       const { TradeNews = [] } = pageIndex;
       TradeNews.forEach(item => {
-        const time = item.createdTime;
+        let time = item.createdTime;
+        time = time.replace(/-/g, '/').replace('T', ' ').substring(0, 19);
         let year = new Date(time).getFullYear();
         let mon = new Date(time).getMonth() + 1 >= 10
           ? new Date(time).getMonth() + 1

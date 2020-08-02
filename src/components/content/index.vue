@@ -42,7 +42,7 @@ export default {
 
   .hy-article {
     color: #666666;
-    font-size: 20px;
+    font-size: 24px;
     max-width: 488px;
     overflow-x: hidden;
 

@@ -56,7 +56,8 @@ const store = new Vuex.Store({
     [SET_NEWS_LIST]: (state, { data }) => {
       let { GroupNews, TradeNews } = data;
       GroupNews = GroupNews.map(item => {
-        const time = item.createdTime;
+        let time = item.createdTime;
+        time = time.replace(/-/g, '/').replace('T', ' ').substring(0, 19);
         let year = new Date(time).getFullYear();
         let mon = new Date(time).getMonth() + 1 >= 10
           ? new Date(time).getMonth() + 1
@@ -69,7 +70,8 @@ const store = new Vuex.Store({
         return item;
       });
       TradeNews = TradeNews.map(item => {
-        const time = item.createdTime;
+        let time = item.createdTime;
+        time = time.replace(/-/g, '/').replace('T', ' ').substring(0, 19);
         let year = new Date(time).getFullYear();
         let mon = new Date(time).getMonth() + 1 >= 10
           ? new Date(time).getMonth() + 1

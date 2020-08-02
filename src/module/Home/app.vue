@@ -132,7 +132,7 @@ body {
     a.more {
       color: #333333;
       font-size: 14px;
-      transform: scale(0.8);
+      // transform: scale(0.8);
       transform-origin: center right;
       white-space: nowrap;
       margin-left: auto;
@@ -181,8 +181,8 @@ body {
 
     span.time {
       color: #999999;
-      font-size: 14px;
-      transform: scale(0.8);
+      font-size: 18px;
+      // transform: scale(0.8);
       transform-origin: center right;
       white-space: nowrap;
       margin-left: auto;
