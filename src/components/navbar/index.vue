@@ -115,7 +115,7 @@ export default {
           ],
         },
       ],
-      homePath: `//${location.host}/home.html`,
+      homePath: `//${location.host}/index.html`,
       openIdx: -1,
       isOverView: false
     };
