@@ -2,7 +2,9 @@
   <div class="container">
     <!-- 导航 -->
     <navbar></navbar>
-    <div class="home-banner"></div>
+    <div class="home-banner">
+      <img :src="bannerImg" alt="" srcset="">
+    </div>
     <div class="home-list">
       <div class="home-list__img" v-for="(item, index) in figure" :key="index">
         <a :href="item.path">
@@ -52,7 +54,7 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters(["figure", "groupNews", "tradeNews"]),
+    ...mapGetters(["figure", "groupNews", "tradeNews", "bannerImg"]),
   },
   components: {
     navbar,
@@ -78,11 +80,13 @@ body,
 body {
   background: #cccccc;
 }
-.home-banner {
+.home-banner img {
   position: relative;
   z-index: 800;
-  background: url('../../assets/images/home.png') no-repeat;
-  background-size: 100% 100%;
+  // background: url('../../assets/images/home.png') no-repeat;
+  // background-size: 100% 100%;
+  width: 100%;
+  height: 100%;
 }
 .home-list,
 .home-news {
@@ -91,8 +95,13 @@ body {
 }
 
 .home-list__img {
-  margin-bottom: -23px;
+  margin-bottom: 23px;
   position: relative;
+
+  a {
+    display: block;
+    height: 328px;
+  }
 
   img {
     width: 100%;

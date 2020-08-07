@@ -100,6 +100,11 @@ const store = new Vuex.Store({
         item.createdTime = `${year}年${mon}月${date}日`;
       });
       return TradeNews;
+    },
+    bannerImg: state => {
+      const { pageIndex } = state;
+      const { PhoneMap = [] } = pageIndex;
+      return (PhoneMap[0] || {}).imagePath;
     }
   }
 });
