@@ -100,14 +100,21 @@ body {
 
   a {
     display: block;
-    height: 328px;
+    height: 314px;
+    // padding: 20px;
+    border: 20px solid rgba(255, 255, 255, 0.5);
+    // background: rgba(255, 255, 255, 0.5);
+    overflow: hidden;
   }
 
   img {
     width: 100%;
-    height: 100%;
-    border: 20px solid rgba(255, 255, 255, 0.5);
+    height: auto;
+    // border: 20px solid rgba(255, 255, 255, 0.5);
     display: block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   p {

@@ -18,6 +18,7 @@ export default {
   .hy-main {
     margin: 25px 30px 0 20px;
     display: flex;
+    min-height: 600px;
   }
 
   .hy-main-wrap {

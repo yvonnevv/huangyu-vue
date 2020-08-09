@@ -34,7 +34,7 @@ export default {
   background: #9a979b;
   width: 750px;
   height: 173px;
-  position: fixed;
+  // position: fixed;
   bottom: 0;
   overflow-x: hidden;
   box-sizing: content-box;
@@ -42,7 +42,7 @@ export default {
   padding-bottom: env(safe-area-inset-bottom);
 
   &-wrap {
-    margin-top: 220px;
+    margin-top: 46px;
     position: relative;
     z-index: 100;
   }
