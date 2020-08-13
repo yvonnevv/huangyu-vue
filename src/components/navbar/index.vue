@@ -207,6 +207,13 @@ export default {
     color: #333;
     position: relative;
 
+    &:active {
+      &::before {
+        background-image: url('../../assets/images/icon_home_active.png');
+      }
+      color: #dfc287;
+    }
+
     &::after {
       height: 1px;
       position: absolute;

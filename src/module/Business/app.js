@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import moment from 'moment'
 
 import App from './app.vue'
 import store from './manage/store'
@@ -23,4 +22,3 @@ const vm = new Vue({
 })
 
 window.vm = vm
-window.moment = moment

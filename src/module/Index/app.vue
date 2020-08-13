@@ -4,6 +4,7 @@
     <navbar></navbar>
     <div class="home-banner">
       <img :src="bannerImg" alt="" srcset="">
+      <i></i>
     </div>
     <div class="home-list">
       <div class="home-list__img" v-for="(item, index) in figure" :key="index">
@@ -75,18 +76,30 @@ body,
 .home-banner {
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
 }
 body {
   background: #cccccc;
 }
-.home-banner img {
+.container {
+  overflow-x: hidden;
+}
+.home-banner {
   position: relative;
-  z-index: 800;
-  // background: url('../../assets/images/home.png') no-repeat;
-  // background-size: 100% 100%;
-  width: 100%;
-  height: 100%;
+  img {
+    position: relative;
+    z-index: 800;
+    width: 100%;
+    height: 100%;
+  }
+  i {
+    position: absolute;
+    width: 123px;
+    height: 343px;
+    background: url('../../assets/images/bg_text.png') no-repeat;
+    background-size: cover;
+    top: 160px;
+    left: 80px;
+  }
 }
 .home-list,
 .home-news {
@@ -105,6 +118,7 @@ body {
     border: 20px solid rgba(255, 255, 255, 0.5);
     // background: rgba(255, 255, 255, 0.5);
     overflow: hidden;
+    position: relative;
   }
 
   img {
@@ -125,11 +139,9 @@ body {
     font-size: 28px;
     text-indent: 18px;
     font-weight: 300;
-    // width: 100%;
-    margin: 0 20px;
-    position: relative;
-    left: 0;
-    top: -68px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
   }
 }
 .home-news {
@@ -205,5 +217,8 @@ body {
       right: 0;
     }
   }
+}
+.hy-copyright {
+  background:rgba(0,0,0,0.4) !important;
 }
 </style>

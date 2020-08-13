@@ -4,7 +4,7 @@ import $http from '../../../util/httpRequest';
 
 Vue.use(Vuex);
 
-const prefix = 'http://www.royalhonors.group';
+const prefix = 'http://mobile.royalhonors.group';
 
 const SET_COPYRIGHT = 'SET_COPYRIGHT';
 const SET_PAGEINFO = 'SET_PAGEINFO';

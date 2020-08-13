@@ -11,6 +11,7 @@ var env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
   : config.build.env
 
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = merge(baseWebpackConfig, {
   devtool: config.build.productionSourceMap ? '#source-map' : false,
@@ -40,6 +41,7 @@ module.exports = merge(baseWebpackConfig, {
     new CleanPlugin(['../dist']),
     //处理分包的机制的插件
     new webpack.optimize.OccurenceOrderPlugin(),
+    new BundleAnalyzerPlugin()
 
     // extract css into its own file
     // new ExtractTextPlugin(utils.assetsPath('css/[name].[contenthash].css')),

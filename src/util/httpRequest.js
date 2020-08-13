@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://www.royalhonors.group/'
+axios.defaults.baseURL = 'http://mobile.royalhonors.group/'
 axios.create({
   timeout: 1000 * 30,
   withCredentials: true,
