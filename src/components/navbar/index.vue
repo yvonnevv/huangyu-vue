@@ -6,7 +6,7 @@
           <img class="logo" src="../../assets/images/logo_top.png" alt srcset />
         </div>
         <yd-accordion>
-          <a :href="homePath" class="nav-item home">
+          <a :href="homePath" class="nav-item home" :class="isHome ? 'active' : ''">
             <p>首页</p>
           </a>
           <yd-accordion-item
@@ -16,6 +16,7 @@
             :ref="`accordion_${index}`"
             :class="index === openIdx ? `${item.className} active`: `${item.className}`"
             @click.native="itemClick(index)"
+            :open="index === openIdx"
           >
             <div v-if="item.child">
               <div
@@ -43,6 +44,7 @@ Vue.component(AccordionItem.name, AccordionItem);
 
 export default {
   name: "navbar",
+  props: ["nowopenidx", "isHome"],
   data() {
     return {
       navList: [
@@ -116,8 +118,8 @@ export default {
         },
       ],
       homePath: `//${location.host}/index.html`,
-      openIdx: -1,
-      isOverView: false
+      isOverView: false,
+      openIdx: this.nowopenidx
     };
   },
   created() {
@@ -207,7 +209,8 @@ export default {
     color: #333;
     position: relative;
 
-    &:active {
+    &:active,
+    &.active {
       &::before {
         background-image: url('../../assets/images/icon_home_active.png');
       }

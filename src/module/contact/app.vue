@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <!-- 导航 -->
-    <navbar></navbar>
+    <navbar :nowopenidx="3"></navbar>
     <banner>
       <img :src="pageInfo.imagePath" alt="" srcset="">
     </banner>
